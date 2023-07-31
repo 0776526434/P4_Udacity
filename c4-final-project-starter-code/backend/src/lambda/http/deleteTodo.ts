@@ -4,7 +4,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import * as middy from 'middy'
 import { cors, httpErrorHandler } from 'middy/middlewares'
 
-import { deleteTodosByTodoId } from '../../helpers/businessLogic/todos'
+import { deleteTodoByTodoId } from '../../helpers/businessLogic/todos'
 import { getUserId } from '../utils'
 
 export const handler = middy(
@@ -12,7 +12,7 @@ export const handler = middy(
     const todoId = event.pathParameters.todoId
     // TODO: Remove a TODO item by id
     const userId = getUserId(event);
-    await deleteTodosByTodoId(userId, todoId);
+    await deleteTodoByTodoId(userId, todoId);
         return {
             statusCode: 202,
             body: JSON.stringify("Deleted successfully!")

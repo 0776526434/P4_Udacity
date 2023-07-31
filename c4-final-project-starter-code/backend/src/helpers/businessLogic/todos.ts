@@ -12,15 +12,15 @@ const logger = createLogger('Todos')
 const todosAccess = new TodosAccess()
 const attachmentUtils = new AttachmentUtils()
 
-export async function getTodosByUserId(userId :string): Promise<TodoItem[]> {
-  return todosAccess.getTodosByUserId(userId)
+export async function getTodoByUserId(userId :string): Promise<TodoItem[]> {
+  return todosAccess.getTodoByUserId(userId)
 }
 
-export async function deleteTodosByTodoId(userId: string, todoId: string) {
+export async function deleteTodoByTodoId(userId: string, todoId: string) {
   todosAccess.deleteTodosByTodoId(userId, todoId)
 }
 
-export async function updateTodos(userId: string, todoId :string, updateTodo :UpdateTodoRequest ) {
+export async function updateTodo(userId: string, todoId :string, updateTodo :UpdateTodoRequest ) {
   todosAccess.updateTodo(userId, todoId, updateTodo)
 }
 
@@ -29,7 +29,7 @@ export async function createAttachmentPre(userId: string, todoId :string) : Prom
   return attachmentUtils.getAttachmentUrl(todoId)
 }
 
-export async function createTodos(
+export async function createTodo(
   createTodoRequest: CreateTodoRequest,
   userId: string
 ): Promise<TodoItem> {
